@@ -1,5 +1,6 @@
 require 'faker'
 require 'table_print'
+require 'bcrypt'
 
 #RESET ALL THE DB
 User.destroy_all
@@ -27,6 +28,8 @@ puts tp City.all
   u.email = Faker::Internet.email
   u.description = Faker::Lorem.paragraph
   u.age = Faker::Number.between(from: 15, to: 70)
+  u.password = "foobar"
+  u.password_confirmation = "foobar"
   u.city = City.all.sample
   u.save
 end
@@ -65,6 +68,10 @@ puts tp Comment.all
     last_name: "unknown",
     age: 30,
     email: Faker::Internet.email,
+    password: "foobar",
+    password_confirmation: "foobar",
     city: City.all.sample
   )
+
 puts tp User.all
+
