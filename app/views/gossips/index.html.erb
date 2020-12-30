@@ -1,0 +1,26 @@
+<h1>Bienvenue sur la page d'accueille de The Gossip Project</h1>
+
+<br><br><br>
+
+<p>
+  <a href="<%= new_gossip_path %>" class="btn btn-success">Créer un nouveau potin!</a>
+</p>
+
+<br>
+
+<h1>Voici la liste des potins:</h1>
+
+<br>
+
+<% @gossips.each do |gossip| %>
+  <h2><strong>Auteur:</strong> <%= gossip.user.first_name %></h2>
+  <p><strong>Titre:</strong> <%= gossip.title %></p>
+  <p>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Lire la suite</a>
+    
+    <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-warning">Editer le potin</a>
+    
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-confirm="Êtes vous sur ?" data-method="delete">Supprimer le potin</a>
+  </p>
+  <br><br>
+<% end %>

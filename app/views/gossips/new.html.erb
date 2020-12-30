@@ -1,0 +1,23 @@
+<h1>Créer un nouveau potin</h1>
+
+<br><br>
+
+<form action="/gossips" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  
+  <div class="form-group">
+  <p>Le titre du potin : <input type="text" name="gossip_title"></p>
+    
+  <br>
+  
+  <p>Le contenu du potin : <input type="text" name="gossip_content"></p>
+  
+  <br><br>
+    
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Créer le potin</button>
+  </div>
+</form>
+
+

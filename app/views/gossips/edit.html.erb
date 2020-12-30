@@ -1,0 +1,20 @@
+<h1>Editer le potin de </h1>
+<h2><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></h2>
+
+<br><br>
+
+<%= form_for @gossip do |f| %>
+  <div class="form-group">
+    <label><strong>Titre du potin: </strong></label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label><strong>Contenu du potin: </strong></label>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Modifier le potin</button>
+  </div>
+<% end %>

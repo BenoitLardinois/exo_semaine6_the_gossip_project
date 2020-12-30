@@ -1,0 +1,26 @@
+
+<p><strong>ID de l'auteur:</strong> <%= @gossip.id %></p>
+
+<p><strong>Prénom:</strong> <%= @gossip.first_name %></p>
+
+<p><strong>Nom:</strong> <%= @gossip.last_name %></p>
+
+<p><strong>Email:</strong> <%= @gossip.email %></p>
+
+<p><strong>Description:</strong> <%= @gossip.description %></p>
+
+<p><strong>Âge:</strong> <%= @gossip.age %></p>
+
+<p><strong>Ville:</strong> <%= @gossip.city.name %></p>
+
+<p><strong>Compte créé le:</strong> <%= @gossip.created_at %></p>
+
+<br><br>
+
+<p>
+  <a href="<%= users_path %>" class="btn btn-primary">Revenir à la page d'accueille des profiles auteurs</a>
+</p>
+
+<p>
+  <a href="<%= gossips_path %>" class="btn btn-primary">Revenir à la page d'accueille des potins</a>
+</p>

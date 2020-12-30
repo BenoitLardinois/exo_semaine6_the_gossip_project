@@ -1,0 +1,17 @@
+<h1><strong>Titre:</strong> <%= @gossip.title %></h1>
+
+<p><strong>Contenu:</strong> <%= @gossip.content %></p>
+
+<br><br>
+
+<p>
+  <a href="<%= user_path(@gossip.user.id) %>" class="btn btn-primary">Voir la page profile de l'auteur</a>
+</p>
+
+<p>
+  <a href="<%= city_path(@gossip.user.city.id) %>" class="btn btn-primary">La ville l'auteur</a>
+</p>
+
+<p>
+  <a href="<%= gossips_path %>" class="btn btn-primary">Revenir à la page d'accueille</a>
+</p>
