@@ -12,4 +12,7 @@ class StaticPagesController < ApplicationController
     @user_name = params[:user_name]
   end
   
+  def profile
+  end
+  
 end

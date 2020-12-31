@@ -28,7 +28,7 @@
               <a class="nav-link" href="/static_pages/Benoit">Votre page personnelle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/gossips">Page d'accueille</a>
+              <a class="nav-link" href="/gossips">Page des potins</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/static_pages/contact">Page contact</a>
@@ -36,6 +36,12 @@
             <li class="nav-item">
               <a class="nav-link" href="/static_pages/team">Page team</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sessions/new">Connectez vous</a>
+            </li>
+               
+            <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+            
           </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">

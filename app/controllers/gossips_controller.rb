@@ -1,5 +1,8 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+  
   def index
+    
     @gossips = Gossip.all
   end
   

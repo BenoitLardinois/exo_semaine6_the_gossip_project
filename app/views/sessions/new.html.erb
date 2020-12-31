@@ -1,0 +1,21 @@
+<h1>Votre email ainsi que votre mot de pass</h1>
+
+<br><br>
+
+<form action="/sessions" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  
+  <div class="form-group">
+  <p>email : <input type="text" name="user_email"></p>
+    
+  <br>
+  
+  <p>mot de pass : <input type="text" name="user_password"></p>
+  
+  <br><br>
+    
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </div>
+</form>
