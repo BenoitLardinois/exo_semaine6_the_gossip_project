@@ -1,7 +1,7 @@
 class User < ApplicationRecord  
   has_many :gossips
   has_many :comments
-  belongs_to :city
+  belongs_to :city, optional: true
   
   validates :first_name, 
   presence: true,

@@ -1,0 +1,52 @@
+<p>
+  <a href="<%= new_gossip_path %>" class="btn btn-success">Créé votre compte</a>
+</p>
+
+<br>
+
+<h1>Informations à remplir:</h1>
+
+<br><br>
+
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  
+  <div class="form-group">
+  <p>Votre prénom : <input type="text" name="user_first_name"></p>
+    
+  <br>
+  
+  <p>Votre nom : <input type="text" name="user_last_name"></p>
+  
+  <br>
+    
+  <p>Votre email : <input type="text" name="user_email"></p>
+    
+  <br>
+  
+  <p>Votre description : <input type="text" name="user_description"></p>
+  
+  <br>
+  
+  <p>Votre âge : <input type="text" name="user_age"></p>
+  
+  <br>
+  
+  <%= label_tag 'Ville* :' %>
+  <%= select_tag "city", options_from_collection_for_select(City.all, :id, :name), {class: 'form-control' } %>
+  
+  <br>
+    
+  <p>Votre mot de pass : <input type="text" name="user_password"></p>
+  
+  <br>
+    
+  <p>confirmation de votre mot de pass : <input type="text" name="user_password_confirmation"></p>
+  
+  <br>
+    
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Créer votre compte</button>
+  </div>
+</form>
