@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     new_user.password_confirmation = params[:user_password_confirmation]
     
     if new_user.save
-      redirect_to users_path
+      redirect_to new_session_path
     else 
       render "/users/new"
     end

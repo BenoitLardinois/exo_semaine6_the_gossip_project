@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GossipProject</title>
+    <title>The Gossip Project</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,30 +18,72 @@
   </head>
 
   <body>
-    <heder>
+    <header>
       <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
           <div class="bg-dark p-4">
             <h4 class="text-white">The Gossip Project</h4>
             <span class="text-muted">1er site de potins en France.</span>
-            <li class="nav-item">
-              <a class="nav-link" href="/static_pages/Benoit">Votre page personnelle</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/gossips">Page des potins</a>
-            </li>
+            <% if !session[:user_id] %>
+		    <li class="nav-item">
+        <a class="nav-link" href="/sessions/new">Se connecter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/new">S'inscrire</a>
+      </li> 
+  
+            
             <li class="nav-item">
               <a class="nav-link" href="/static_pages/contact">Page contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/static_pages/team">Page team</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/sessions/new">Connectez vous</a>
+ <% else %>
+	    <li class="nav-item">
+        
+        <div class="dropdown">
+  				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			Compte de <%= User.find_by(id: session[:user_id]).first_name %>
+  				</button>
+  				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    				<a class="dropdown-item" href="/users/<%= session[:user_id] %>">Voir mon profil</a>
+    				<div class="dropdown-divider"></div>
+    				<%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, :confirm=>"Êtes vous sûr de vouloir vous déconnecter ?"%>
+             <li class="nav-item">
+              <a class="nav-link" href="/static_pages/contact">Page contact</a>
             </li>
-               
-            <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+            <li class="nav-item">
+              <a class="nav-link" href="/static_pages/team">Page team</a>
+            </li>
+  				</div>
+				</div>
+      
+      </li>
+ 
+<% end %>
+
+  </div>
+  
+  <% flash.each do |name, msg| %>
+  	<div class="alert alert-<%= name %> alert-dismissible fade show" role="<%= name %>"><%= msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>$</div>
+    
+  <% end %>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
             
+            
+            
+          
           </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
@@ -49,8 +91,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </nav>
-      </div>
-    </heder>
+    </header>
     <div class="container" style="padding-top: 5rem;">
        <%= yield %>
     </div>
