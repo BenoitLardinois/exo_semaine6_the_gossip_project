@@ -30,7 +30,7 @@ class GossipsController < ApplicationController
     new_gossip.id = Gossip.all.length + 1
     new_gossip.title = params[:gossip_title]
     new_gossip.content = params[:gossip_content]
-    new_gossip.user = User.all.find_by(first_name: "anonymous")
+    new_gossip.user_id = session[:user_id]
     
     if new_gossip.save
       redirect_to gossips_path
