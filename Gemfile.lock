@@ -216,7 +216,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  bootsnap (>= 1.4.4)
+  bootsnap (>= 1.5.1)
   bootstrap
   byebug
   capybara (>= 3.26)
