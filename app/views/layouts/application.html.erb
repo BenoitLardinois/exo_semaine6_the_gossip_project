@@ -24,74 +24,58 @@
           <div class="bg-dark p-4">
             <h4 class="text-white">The Gossip Project</h4>
             <span class="text-muted">1er site de potins en France.</span>
+            
             <% if !session[:user_id] %>
-		    <li class="nav-item">
-        <a class="nav-link" href="/sessions/new">Se connecter</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/users/new">S'inscrire</a>
-      </li> 
-  
+		          <li class="nav-item">
+                <a class="nav-link" href="/sessions/new">Se connecter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/new">S'inscrire</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="/static_pages/contact">Page contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/static_pages/team">Page team</a>
+              </li>
+            <% else %>
             
-            <li class="nav-item">
-              <a class="nav-link" href="/static_pages/contact">Page contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/static_pages/team">Page team</a>
-            </li>
- <% else %>
-	    <li class="nav-item">
+	         <li class="nav-item">
         
-        <div class="dropdown">
-  				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			Compte de <%= User.find_by(id: session[:user_id]).first_name %>
-  				</button>
-  				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    				<a class="dropdown-item" href="/users/<%= session[:user_id] %>">Voir mon profil</a>
-    				<div class="dropdown-divider"></div>
-    				<%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, :confirm=>"Êtes vous sûr de vouloir vous déconnecter ?"%>
-             <li class="nav-item">
-              <a class="nav-link" href="/static_pages/contact">Page contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/static_pages/team">Page team</a>
-            </li>
-  				</div>
-				</div>
+            <div class="dropdown">
+  				    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			      Compte de <%= User.find_by(id: session[:user_id]).first_name %>
+  				    </button>
+  				    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    				    <a class="dropdown-item" href="/users/<%= session[:user_id] %>">Voir mon profil</a>
+    				    <div class="dropdown-divider"></div>
+    				      <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/static_pages/contact">Page contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/static_pages/team">Page team</a>
+                </li>
+  				    </div>
+				    </div>
       
-      </li>
+            </li>
  
-<% end %>
-
-  </div>
-  
-  <% flash.each do |name, msg| %>
-  	<div class="alert alert-<%= name %> alert-dismissible fade show" role="<%= name %>"><%= msg %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>$</div>
-    
-  <% end %>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-            
-            
-            
-          
+            <% end %>
           </div>
+          <% flash.each do |name, msg| %>
+  	        <div class="alert alert-<%= name %> alert-dismissible fade show" role="<%= name %>"><%= msg %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>$</div>
+          <% end %>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
     </header>
+    
     <div class="container" style="padding-top: 5rem;">
        <%= yield %>
     </div>
