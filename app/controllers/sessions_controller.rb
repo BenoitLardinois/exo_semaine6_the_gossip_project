@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def new
   end
   
@@ -6,7 +7,10 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:user_email])
     
     if user && user.authenticate(params[:user_password])
-      session[:user_id] = user.id
+      #session[:user_id] = user.id
+      login(user)
+      flash[:notice] = "Bienvenue #{user.first_name} #{user.last_name}"
+      remember(user)
       redirect_to gossips_path
     else
       flash.now[:danger] = "Invalid email/password combination"

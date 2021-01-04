@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  include ApplicationHelper
+  include SessionsHelper
   
   def authenticate_user
     unless session[:user_id] && current_user
