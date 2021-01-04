@@ -19,7 +19,9 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session.delete(:user_id)
+    #session.delete(:user_id)
+    log_out(current_user)
+    flash[:notice] = "Tu es désormais déconnecté!"
     redirect_to '/sessions/new'
   end
   
